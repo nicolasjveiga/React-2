@@ -2,11 +2,7 @@ import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import StoryList from '../../../components/StoryList';
 import PostCard from '../../../components/PostCard';
 import { useRouter } from 'expo-router';
-
-const posts = [
-  { id: '1', title: 'fusca', location: 'Guarapuava' },
-  { id: '2', title: 'fusca', location: 'Curitiba' },
-];
+import { posts } from '../../../data/posts';
 
 export default function FeedScreen() {
   const router = useRouter();
@@ -22,7 +18,11 @@ export default function FeedScreen() {
             params: { postId: post.id }
           })}
         >
-          <PostCard title={post.title} location={post.location} />
+          <PostCard
+            title={post.title}
+            location={post.location}
+            image={post.image}
+          />
         </TouchableOpacity>
       ))}
     </ScrollView>

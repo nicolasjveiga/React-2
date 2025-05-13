@@ -3,13 +3,14 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 interface PostCardProps {
   title: string;
   location: string;
+  image?: string;
 }
 
-export default function PostCard({ title, location }: PostCardProps) {
+export default function PostCard({ title, location, image }: PostCardProps) {
   return (
     <View style={styles.card}>
       <View style={styles.header}>
-      <Image source={{ uri: 'https://fotos-jornaldocarro-estadao.nyc3.cdn.digitaloceanspaces.com/uploads/2018/06/30151604/41545551-1160x773.jpg' }} style={styles.avatar} />
+      <Image source={{ uri: image }} style={styles.avatar} />
 
         <View>
           <Text style={styles.username}>{title}</Text>
@@ -18,7 +19,7 @@ export default function PostCard({ title, location }: PostCardProps) {
       </View>
 
       <Image
-        source={{ uri: 'https://fotos-jornaldocarro-estadao.nyc3.cdn.digitaloceanspaces.com/uploads/2018/06/30151604/41545551-1160x773.jpg' }}
+        source={{ uri: image }}
         style={styles.postImage}
         resizeMode="cover"
     />

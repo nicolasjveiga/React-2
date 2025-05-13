@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 interface PostCardProps {
   title: string;
   location: string;
-  image: string;
 }
 
 export default function PostCard({ title, location }: PostCardProps) {

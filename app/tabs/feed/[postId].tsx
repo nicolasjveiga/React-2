@@ -6,7 +6,7 @@ export default function PostDetails() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Post ID: {postId}</Text>
+      <Text style={styles.title}>Post ID: { postId }</Text>
       <Text style={styles.content}>This is the post { postId } content.</Text>
     </View>
   );

@@ -18,11 +18,7 @@ export default function FeedScreen() {
             params: { postId: post.id }
           })}
         >
-          <PostCard
-            title={post.title}
-            location={post.location}
-            image={post.image}
-          />
+          <PostCard title={post.title} location={post.location} />
         </TouchableOpacity>
       ))}
     </ScrollView>

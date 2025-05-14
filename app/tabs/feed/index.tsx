@@ -13,12 +13,21 @@ export default function FeedScreen() {
       {posts.map((post) => (
         <TouchableOpacity
           key={post.id}
-          onPress={() => router.push({
-            pathname: '/tabs/feed/[postId]',
-            params: { postId: post.id }
-          })}
+          onPress={() =>
+            router.push({
+              pathname: '/tabs/feed/[postId]',
+              params: { postId: post.id },
+            })
+          }
         >
-          <PostCard title={post.title} location={post.location} />
+          <PostCard
+            title={post.title}
+            location={post.location}
+            image={post.image}
+            likes={post.likes}
+            hashtags={post.hashtags}
+            description={post.description}
+          />
         </TouchableOpacity>
       ))}
     </ScrollView>

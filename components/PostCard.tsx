@@ -1,12 +1,17 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+
 
 interface PostCardProps {
   title: string;
   location: string;
-  image?: string;
+  image: string;
+  likes?: string | string[];
+  hashtags?: string | string[];
+  description?: string;
 }
 
-export default function PostCard({ title, location, image }: PostCardProps) {
+export default function PostCard({ title, location, image, likes, hashtags, description }: PostCardProps) {
   return (
     <View style={styles.card}>
       <View style={styles.header}>
@@ -26,11 +31,17 @@ export default function PostCard({ title, location, image }: PostCardProps) {
 
 
       <View style={styles.footer}>
-        <Text style={styles.actions}>❤️ 💬 📤</Text>
-        <Text style={styles.likes}>Curtido por <Text style={{ fontWeight: 'bold' }}>vw</Text>, <Text style={{ fontWeight: 'bold' }}>gm_opala</Text> e outras pessoas.</Text>
+        
+        <View style={styles.actions}>
+          <FontAwesome name="heart-o" size={20} color="#000" style={{ marginRight: 10 }} />
+          <FontAwesome name="comment-o" size={20} color="#000" style={{ marginRight: 10 }} />
+          <FontAwesome name="share-square-o" size={20} color="#000" />
+        </View>
+
+        <Text style={styles.likes}>Curtido por <Text style={styles.username}>{likes}</Text> e outras pessoas.</Text>
         <Text>
           <Text style={styles.username}>{title}</Text>
-          <Text> <Text style={styles.hashtag}>#AirCooledSQN</Text> Pra quem pediu, está aí o besouro repousando no fim de tarde…</Text>
+          <Text> <Text style={styles.hashtag}>{hashtags}</Text>{description}</Text>
         </Text>
       </View>
     </View>
@@ -44,13 +55,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
   },
+  
   header: {
     flexDirection: 'row',
     padding: 12,
     alignItems: 'center',
   },
   avatar: {
-    width: 40, height: 40, borderRadius: 20, marginRight: 10,
+    width: 40, 
+    height: 40, 
+    borderRadius: 20, 
+    marginRight: 10,
   },
   username: {
     fontWeight: 'bold',
@@ -67,8 +82,9 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   actions: {
-    fontSize: 20,
-    marginBottom: 6,
+  flexDirection: 'row',
+  fontSize: 20,
+  marginBottom: 6,
   },
   likes: {
     marginBottom: 4,
